@@ -104,7 +104,7 @@ import UIKit
     // MARK: - Private
 
     private let stackView = UIStackView()
-    public var items: [RadioGroupItem] {
+    private var items: [RadioGroupItem] {
         return stackView.arrangedSubviews.compactMap { $0 as? RadioGroupItem }
     }
 
@@ -124,6 +124,12 @@ import UIKit
         isButtonAfterTitle = { isButtonAfterTitle }()
         titleAlignment = { titleAlignment }()
         selectedIndex = { selectedIndex }()
+        items.forEach{item in
+            item.layer.borderColor = UIColor.black.cgColor
+            item.layer.borderWidth = 1
+            item.layer.cornerRadius = 8
+        }
+        
     }
 
     private func item(at index: Int) -> RadioGroupItem? {
