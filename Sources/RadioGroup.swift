@@ -125,6 +125,7 @@ import UIKit
         titleAlignment = { titleAlignment }()
         selectedIndex = { selectedIndex }()
         items.forEach{item in
+            item.layer.addGradientBorder(colors:[UIColor.white,UIColor.white] , width: 40)
             item.layer.addGradientBorder(colors:[UIColor.black,UIColor.black] , width: 1)
             item.layer.cornerRadius = 8
         }
