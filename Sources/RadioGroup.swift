@@ -104,7 +104,7 @@ import UIKit
     // MARK: - Private
 
     private let stackView = UIStackView()
-    private var items: [RadioGroupItem] {
+    var items: [RadioGroupItem] {
         return stackView.arrangedSubviews.compactMap { $0 as? RadioGroupItem }
     }
 
@@ -202,8 +202,6 @@ class RadioGroupItem: UIView {
         }
         let wrapper = UIView()
         wrapper.addConstrainedSubview(titleLabel, constrain: .top, .bottom, .left, .right)
-        wrapper.layer.borderColor = UIColor.black.cgColor
-        wrapper.layer.borderWidth = 1
         addConstrainedSubview(stackView, constrain: .left, .right, .top, .bottom)
         stackView.addArrangedSubviews([radioButton, wrapper])
         stackView.alignment = .center
