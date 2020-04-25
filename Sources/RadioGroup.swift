@@ -104,7 +104,7 @@ import UIKit
     // MARK: - Private
 
     private let stackView = UIStackView()
-    var items: [RadioGroupItem] {
+    public var items: [RadioGroupItem] {
         return stackView.arrangedSubviews.compactMap { $0 as? RadioGroupItem }
     }
 
