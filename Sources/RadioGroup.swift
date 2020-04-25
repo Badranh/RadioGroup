@@ -124,11 +124,6 @@ import UIKit
         isButtonAfterTitle = { isButtonAfterTitle }()
         titleAlignment = { titleAlignment }()
         selectedIndex = { selectedIndex }()
-        items.forEach{item in
-            item.layer.borderColor = UIColor.black.cgColor
-            item.layer.borderWidth = 1
-            item.layer.cornerRadius = 8
-        }
         
     }
 
@@ -211,6 +206,9 @@ class RadioGroupItem: UIView {
         addConstrainedSubview(stackView, constrain: .left, .right, .top, .bottom)
         stackView.addArrangedSubviews([radioButton, wrapper])
         stackView.alignment = .center
+        stackView.layer.borderColor = UIColor.black.cgColor
+        stackView.layer.borderWidth = 1
+        stackView.layer.cornerRadius = 8
         setContentCompressionResistancePriority(.required, for: .vertical)
 
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelect)))
