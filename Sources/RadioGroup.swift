@@ -124,11 +124,7 @@ import UIKit
         isButtonAfterTitle = { isButtonAfterTitle }()
         titleAlignment = { titleAlignment }()
         selectedIndex = { selectedIndex }()
-        items.forEach{item in
-            item.layer.addGradientBorder(colors:[UIColor.white,UIColor.white] , width: 40)
-            item.layer.addGradientBorder(colors:[UIColor.black,UIColor.black] , width: 1)
-            item.layer.cornerRadius = 8
-        }
+       
         
     }
 
@@ -211,6 +207,11 @@ class RadioGroupItem: UIView {
         addConstrainedSubview(stackView, constrain: .left, .right, .top, .bottom)
         stackView.addArrangedSubviews([radioButton, wrapper])
         stackView.alignment = .center
+        let wrappingView = UIView()
+        wrappingView.backgroundColor = .clear
+        wrappingView.layer.borderColor = UIColor.black.cgColor
+        wrappingView.layer.borderWidth = 1.0;
+        wrappingView.addSubview(stackView)
         setContentCompressionResistancePriority(.required, for: .vertical)
 
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelect)))
@@ -241,21 +242,4 @@ extension UIStackView {
     }
 }
 
-extension CALayer {
-    func addGradientBorder(colors:[UIColor],width:CGFloat = 1) {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame =  CGRect(origin: CGPoint.zero, size: self.bounds.size)
-        gradientLayer.startPoint = CGPoint(x:0.0, y:0.0)
-        gradientLayer.endPoint = CGPoint(x:1.0,y:1.0)
-        gradientLayer.colors = colors.map({$0.cgColor})
 
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.lineWidth = width
-        shapeLayer.path = UIBezierPath(rect: self.bounds).cgPath
-        shapeLayer.fillColor = nil
-        shapeLayer.strokeColor = UIColor.red.cgColor
-        gradientLayer.mask = shapeLayer
-
-        self.addSublayer(gradientLayer)
-    }
-}
