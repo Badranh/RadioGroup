@@ -53,7 +53,7 @@ import UIKit
                         item(at: selectedIndex)?.radioButton.isSelected = true
                     }
                 }else{
-                    item(at: selectedIndex)?.radioButton.isSelected = true
+                    item(at: selectedIndex)?.radioButton.isSelected = !item(at: selectedIndex)?.radioButton.isSelected ?? false
                 }
             }
             
