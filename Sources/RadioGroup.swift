@@ -46,10 +46,12 @@ import UIKit
                 item(at: selectedIndex)?.radioButton.isSelected = true
             }else{
                 if(oldValue == selectedIndex){
-                    if(item(at: selectedIndex)?.radioButton.isSelected)
+                    if(item(at: selectedIndex)?.radioButton.isSelected){
                         item(at: selectedIndex)?.radioButton.isSelected = false
-                    else
+                    }
+                    else{
                         item(at: selectedIndex)?.radioButton.isSelected = true
+                    }
                 }else{
                     item(at: selectedIndex)?.radioButton.isSelected = true
                 }
