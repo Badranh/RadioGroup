@@ -40,12 +40,15 @@ import UIKit
     
     @IBInspectable open var selectedIndex: Int = -1 {
         didSet {
-            
+            if(selectedIndex == oldValue){
+                item(at: oldValue)?.radioButton.isSelected = false
+            }else{
             if(!turnOnMultipleSelection){
                 item(at: oldValue)?.radioButton.isSelected = false
                 item(at: selectedIndex)?.radioButton.isSelected = true
             }else{
                 item(at: selectedIndex)?.radioButton.isSelected = true
+            }
             }
         }
     }
