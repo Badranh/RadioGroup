@@ -46,7 +46,10 @@ import UIKit
                 item(at: selectedIndex)?.radioButton.isSelected = true
             }else{
                 if(oldValue == selectedIndex){
-                    item(at: selectedIndex)?.radioButton.isSelected = ((item(at: selectedIndex)?.radioButton.isSelected.toggle()) != nil)
+                    if(item(at: selectedIndex)?.radioButton.isSelected)
+                        item(at: selectedIndex)?.radioButton.isSelected = false
+                    else
+                        item(at: selectedIndex)?.radioButton.isSelected = true
                 }else{
                     item(at: selectedIndex)?.radioButton.isSelected = true
                 }
