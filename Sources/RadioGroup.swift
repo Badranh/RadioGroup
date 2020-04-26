@@ -36,10 +36,17 @@ import UIKit
         }
     }
 
+    @IBInspectable open var turnOnMultipleSelection: Bool = false
+    
     @IBInspectable open var selectedIndex: Int = -1 {
         didSet {
-            item(at: oldValue)?.radioButton.isSelected = false
-            item(at: selectedIndex)?.radioButton.isSelected = true
+            
+            if(!turnOnMultipleSelection){
+                item(at: oldValue)?.radioButton.isSelected = false
+                item(at: selectedIndex)?.radioButton.isSelected = true
+            }else{
+                item(at: selectedIndex)?.radioButton.isSelected = true
+            }
         }
     }
 
@@ -124,8 +131,6 @@ import UIKit
         isButtonAfterTitle = { isButtonAfterTitle }()
         titleAlignment = { titleAlignment }()
         selectedIndex = { selectedIndex }()
-       
-        
     }
 
     private func item(at index: Int) -> RadioGroupItem? {
@@ -204,14 +209,10 @@ class RadioGroupItem: UIView {
         }
         let wrapper = UIView()
         wrapper.addConstrainedSubview(titleLabel, constrain: .top, .bottom, .left, .right)
+
         addConstrainedSubview(stackView, constrain: .left, .right, .top, .bottom)
         stackView.addArrangedSubviews([radioButton, wrapper])
         stackView.alignment = .center
-        let wrappingView = UIView()
-        wrappingView.backgroundColor = .clear
-        wrappingView.layer.borderColor = UIColor.black.cgColor
-        wrappingView.layer.borderWidth = 1.0;
-        wrappingView.addSubview(stackView)
         setContentCompressionResistancePriority(.required, for: .vertical)
 
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelect)))
@@ -241,5 +242,3 @@ extension UIStackView {
         }
     }
 }
-
-
