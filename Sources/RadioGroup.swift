@@ -42,6 +42,7 @@ import UIKit
         didSet {
             if(selectedIndex == oldValue){
                 item(at: oldValue)?.radioButton.isSelected = false
+                oldValue = -1
             }else{
             if(!turnOnMultipleSelection){
                 item(at: oldValue)?.radioButton.isSelected = false
