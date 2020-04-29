@@ -122,6 +122,7 @@ import UIKit
         for item in items{
             item.unselect()
         }
+                sendActions(for: [.valueChanged, .primaryActionTriggered])
     }
     // MARK: - Private
 
