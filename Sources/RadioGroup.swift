@@ -120,9 +120,10 @@ import UIKit
 
     public func unselectAll(){
         for item in items{
-            item.unselect()
+            item.radioButton.isSelected = false
         }
-                sendActions(for: [.valueChanged, .primaryActionTriggered])
+        selectedIndex = -1
+        sendActions(for: [.valueChanged, .primaryActionTriggered])
     }
     // MARK: - Private
 
