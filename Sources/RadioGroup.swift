@@ -118,6 +118,11 @@ import UIKit
         }
     }
 
+    public func unselectAll(){
+        for item in items{
+            item.unselect()
+        }
+    }
     // MARK: - Private
 
     private let stackView = UIStackView()
@@ -197,6 +202,7 @@ class RadioGroupItem: UIView {
         setup()
     }
 
+ 
     init(attributedTitle: NSAttributedString?, group: RadioGroup) {
         self.group = group
         super.init(frame: .zero)
@@ -204,6 +210,10 @@ class RadioGroupItem: UIView {
         setup()
     }
 
+    public func unselect(){
+         radioButton.isSelected = false
+     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
